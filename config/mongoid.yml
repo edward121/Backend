@@ -1,0 +1,45 @@
+development:
+  clients:
+    default:
+      database: salish_development
+      hosts:
+        - localhost:27017
+      options:
+  options:
+
+test:
+  clients:
+    default:
+      database: salish_test
+      hosts:
+        - localhost:27017
+      options:
+        read:
+          mode: primary
+        max_pool_size: 1
+#
+# production:
+#   clients:
+#     default:
+#       database: salish_production
+#       hosts:
+#         - localhost:27017
+#       options:
+#   options:
+#
+
+production:
+  clients:
+    default:
+     # The standard MongoDB connection URI allows for easy
+     # replica set connection setup.
+     # Use environment variables or a config file to keep your
+     # credentials safe e.g. <%= ENV['MONGODB_URI'] %>.
+     uri: "mongodb://heroku_wjjq1v6d:g0ul3hr8fb40hhh91bhgq441lj@ds019836.mlab.com:19836/heroku_wjjq1v6d"
+
+     options:
+       # The default timeout is 5, which is the time in seconds
+       # for a connection to time out.
+       # We recommend 15 because it allows for plenty of time
+       # in most operating environments.
+       connect_timeout: 15

@@ -1,0 +1,68 @@
+= Salish APIs
+
+== Accounts API
+
+==== Create account
+    POST: /api/v1/accounts/create
+
+    parameters accepted
+      email:          String *required
+      password:       String *required minimum 6
+
+      curl \
+        -F "email=tester2@email.com" \
+        -F "password=tester2" \
+        http://localhost:3000/api/v1/accounts/create
+      results:
+      {"status": 1, "data":"zqTgTKo7WJGgnFxDTRVN"}
+
+==== Destroy account API
+    POST: /api/v1/accounts/destroy
+    parameters:
+      token:      String *required
+    results:
+      return sign out and success string
+
+      curl \
+        -F "token=Ga54ArGxf8FH8hEef6tC" \
+        http://localhost:3000/api/v1/accounts/destroy
+
+==== Sign In(from app's account)
+
+    POST: /api/v1/accounts/sign_in
+
+    parameters accepted
+      'email'      String,      *required
+      'password'   String,      *requried
+    results:
+
+    curl \
+      -F "email=tester2@email.com" \
+      -F "password=12341234" \
+      http://localhost:3000/api/v1/accounts/sign_in
+
+==== Sign Out
+    LogOut API
+    POST: /api/v1/accounts/sign_out
+    parameters:
+      token:      String *required
+    results:
+      return user_info
+    curl \
+      -F "token=Ga54ArGxf8FH8hEef6tC" \
+      http://localhost:3000/api/v1/accounts/sign_out
+
+==== Reset Password
+      GET: /api/v1/accounts/forgot_password
+      parameters:
+        email:      String *required
+      results:
+        {status: 1, data: 'Email was sent successfully'}
+
+==== Set device token
+    POST: /api/v1/accounts/set_device
+      Parameters accepted
+        token         String *
+        device_token  String *
+      Results
+        {status: 1, data: set device_token}
